@@ -35,7 +35,17 @@ if [ ! -f "$WEB_SRC/dark-search-fix-v2.css" ]; then
 fi
 
 if ! grep -q 'dark-search-result-colors-v2' "$WEB_SRC/index.html"; then
-    echo "ERROR: index.html не содержит встроенное исправление цветов"
+    echo "ERROR: index.html не содержит встроенное исправление цветов поиска"
+    exit 1
+fi
+
+if ! grep -q 'dark-search-fix-v2.css?v=3' "$WEB_SRC/index.html"; then
+    echo "ERROR: index.html не содержит актуальную версию CSS v3"
+    exit 1
+fi
+
+if ! grep -q '.ui.menu .ui.dropdown .menu' "$WEB_SRC/dark-search-fix-v2.css"; then
+    echo "ERROR: CSS не содержит исправление выпадающего меню Torrents"
     exit 1
 fi
 
@@ -62,7 +72,8 @@ ls -l \
   "$ADDON/resources/web/dark-search-fix-v2.css" \
   "$ADDON/resources/web/index.html"
 
-grep -o 'dark-search-result-colors-v2' "$ADDON/resources/web/index.html" | head -n 1
+grep -o 'dark-search-fix-v2.css?v=3' "$ADDON/resources/web/index.html" | head -n 1
+grep -o '.ui.menu .ui.dropdown .menu' "$ADDON/resources/web/dark-search-fix-v2.css" | head -n 1
 sha256sum \
   "$ADDON/resources/web/dark-search-fix-v2.css" \
   "$ADDON/resources/web/index.html"
