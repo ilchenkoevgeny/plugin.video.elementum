@@ -1,0 +1,10 @@
+:root[data-theme='dark'] .ui.search > .results .result .ui.items > .item > .content,
+:root[data-theme='dark'] .ui.search > .results .result .ui.items > .item > .content > .header {
+  color: var(--text) !important;
+}
+
+:root[data-theme='dark'] .ui.search > .results .result .ui.items > .item > .content > .meta,
+:root[data-theme='dark'] .ui.search > .results .result .ui.items > .item > .content > .description,
+:root[data-theme='dark'] .ui.search > .results .result .ui.items > .item > .content > .extra {
+  color: var(--text-muted) !important;
+}
