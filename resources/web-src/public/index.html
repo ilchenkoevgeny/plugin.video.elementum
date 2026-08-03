@@ -10,7 +10,24 @@
       content="Web UI for the Elementum addon"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="stylesheet" href="%PUBLIC_URL%/dark-search-fix.css" />
+    <link rel="stylesheet" href="%PUBLIC_URL%/dark-search-fix-v2.css?v=2" />
+    <style id="dark-search-result-colors-v2">
+      html[data-theme='dark'] body .ui.search .results .result .header,
+      html[data-theme='dark'] body .ui.search .results .result .header * {
+        color: #e6edf3 !important;
+        color: var(--text) !important;
+      }
+
+      html[data-theme='dark'] body .ui.search .results .result .meta,
+      html[data-theme='dark'] body .ui.search .results .result .meta *,
+      html[data-theme='dark'] body .ui.search .results .result .description,
+      html[data-theme='dark'] body .ui.search .results .result .description *,
+      html[data-theme='dark'] body .ui.search .results .result .extra,
+      html[data-theme='dark'] body .ui.search .results .result .extra * {
+        color: #9da7b3 !important;
+        color: var(--text-muted) !important;
+      }
+    </style>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
