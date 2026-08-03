@@ -1,0 +1,15 @@
+html[data-theme='dark'] body .ui.search .results .result .header,
+html[data-theme='dark'] body .ui.search .results .result .header * {
+  color: #e6edf3 !important;
+  color: var(--text) !important;
+}
+
+html[data-theme='dark'] body .ui.search .results .result .meta,
+html[data-theme='dark'] body .ui.search .results .result .meta *,
+html[data-theme='dark'] body .ui.search .results .result .description,
+html[data-theme='dark'] body .ui.search .results .result .description *,
+html[data-theme='dark'] body .ui.search .results .result .extra,
+html[data-theme='dark'] body .ui.search .results .result .extra * {
+  color: #9da7b3 !important;
+  color: var(--text-muted) !important;
+}
