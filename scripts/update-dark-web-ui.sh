@@ -29,13 +29,13 @@ if [ ! -d "$ADDON/resources/web" ]; then
     exit 1
 fi
 
-if [ ! -f "$WEB_SRC/dark-search-fix.css" ]; then
-    echo "ERROR: в сборке отсутствует dark-search-fix.css"
+if [ ! -f "$WEB_SRC/dark-search-fix-v2.css" ]; then
+    echo "ERROR: в сборке отсутствует dark-search-fix-v2.css"
     exit 1
 fi
 
-if ! grep -q 'dark-search-fix.css' "$WEB_SRC/index.html"; then
-    echo "ERROR: index.html не подключает dark-search-fix.css"
+if ! grep -q 'dark-search-result-colors-v2' "$WEB_SRC/index.html"; then
+    echo "ERROR: index.html не содержит встроенное исправление цветов"
     exit 1
 fi
 
@@ -59,11 +59,13 @@ sleep 8
 
 echo "=== RESULT ==="
 ls -l \
-  "$ADDON/resources/web/dark-search-fix.css" \
+  "$ADDON/resources/web/dark-search-fix-v2.css" \
   "$ADDON/resources/web/index.html"
 
-grep -o 'dark-search-fix.css' "$ADDON/resources/web/index.html" | head -n 1
-sha256sum "$ADDON/resources/web/dark-search-fix.css"
+grep -o 'dark-search-result-colors-v2' "$ADDON/resources/web/index.html" | head -n 1
+sha256sum \
+  "$ADDON/resources/web/dark-search-fix-v2.css" \
+  "$ADDON/resources/web/index.html"
 
 echo "Backup: $UPDATE_DIR/web.bak"
-echo "Готово. Обновите Web UI с принудительной очисткой кэша: Ctrl+F5."
+echo "Готово. Полностью закройте вкладку Web UI, откройте её снова и нажмите Ctrl+F5."
