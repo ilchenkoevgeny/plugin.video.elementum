@@ -13,3 +13,31 @@ html[data-theme='dark'] body .ui.search .results .result .extra * {
   color: #9da7b3 !important;
   color: var(--text-muted) !important;
 }
+
+html[data-theme='dark'] body .ui.menu .ui.dropdown .menu,
+html[data-theme='dark'] body .ui.menu .dropdown.item .menu {
+  background: #161b22 !important;
+  background: var(--surface) !important;
+  border-color: #30363d !important;
+  border-color: var(--border) !important;
+}
+
+html[data-theme='dark'] body .ui.menu .ui.dropdown .menu > .item,
+html[data-theme='dark'] body .ui.menu .dropdown.item .menu > .item {
+  background: #161b22 !important;
+  background: var(--surface) !important;
+  color: #e6edf3 !important;
+  color: var(--text) !important;
+}
+
+html[data-theme='dark'] body .ui.menu .ui.dropdown .menu > .item:hover,
+html[data-theme='dark'] body .ui.menu .ui.dropdown .menu > .selected.item,
+html[data-theme='dark'] body .ui.menu .ui.dropdown .menu > .active.item,
+html[data-theme='dark'] body .ui.menu .dropdown.item .menu > .item:hover,
+html[data-theme='dark'] body .ui.menu .dropdown.item .menu > .selected.item,
+html[data-theme='dark'] body .ui.menu .dropdown.item .menu > .active.item {
+  background: #292f37 !important;
+  background: var(--surface-hover) !important;
+  color: #e6edf3 !important;
+  color: var(--text) !important;
+}
