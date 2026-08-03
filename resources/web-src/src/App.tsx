@@ -7,11 +7,19 @@ import TorrentInfo from './torrent-info';
 import { ITorrent, StatusCode } from './dataStructure';
 import 'semantic-ui-css/semantic.min.css';
 import './style.css';
-import { getRefreshRate } from './Services/settings';
+import { applyTheme, getRefreshRate, getTheme, saveTheme, Theme } from './Services/settings';
 
 function App(): JSX.Element {
   const [torrents, setTorrents] = useState<ITorrent[]>([]);
   const [activeTorrents, setActiveTorrents] = useState<ITorrent[]>([]);
+  const [theme, setTheme] = useState<Theme>(getTheme);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    applyTheme(nextTheme);
+    saveTheme(nextTheme);
+    setTheme(nextTheme);
+  };
 
   useEffect(() => {
     const getList = async () => {
@@ -27,7 +35,7 @@ function App(): JSX.Element {
 
   return (
     <div>
-      <HeaderMenu />
+      <HeaderMenu theme={theme} onToggleTheme={toggleTheme} />
       <div className="app">
         <SearchBar
           totalDownloadRate={torrents.reduce((rate, item) => rate + item.download_rate, 0)}
@@ -37,7 +45,7 @@ function App(): JSX.Element {
           total={torrents.length}
         />
         <TorrentList torrents={torrents} onSetActiveTorrents={setActiveTorrents} activeTorrents={activeTorrents} />
-        {activeTorrents.length > 0 && <TorrentInfo torrent={activeTorrents[activeTorrents.length - 1]} />}
+        {activeTorrents.length > 0 && <TorrentInfo torrent={activeTorrents[activeTorrents.length - 1]} theme={theme} />}
       </div>
     </div>
   );

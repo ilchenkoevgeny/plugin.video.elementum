@@ -2,11 +2,12 @@ import prettyBytes from 'pretty-bytes';
 import React, { useEffect, useState } from 'react';
 import { Grid, GridColumn, GridRow, List, Tab } from 'semantic-ui-react';
 import { ITorrent } from '../dataStructure';
-import { getRefreshRate } from '../Services/settings';
+import { getRefreshRate, Theme } from '../Services/settings';
 import PieceMap from './piece-map';
 
 interface ITorrentInfoItemProps {
   torrent: ITorrent;
+  theme: Theme;
 }
 
 interface Tree {
@@ -61,7 +62,7 @@ const renderFileTree = (files: string[][]): JSX.Element => {
   );
 };
 
-const TorrentInfo = ({ torrent }: ITorrentInfoItemProps): JSX.Element => {
+const TorrentInfo = ({ torrent, theme }: ITorrentInfoItemProps): JSX.Element => {
   const [filesList, setFilesList] = useState<string[]>([]);
   const [piecesList, setPiecesList] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(true);
@@ -144,7 +145,7 @@ const TorrentInfo = ({ torrent }: ITorrentInfoItemProps): JSX.Element => {
       menuItem: { key: 'pieces', content: 'Pieces' },
       render: () => (
         <Tab.Pane loading={loading}>
-          <PieceMap pieces={piecesList} />
+          <PieceMap pieces={piecesList} theme={theme} />
         </Tab.Pane>
       ),
     },

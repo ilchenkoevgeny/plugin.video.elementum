@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
-import { Menu, Image, Modal, Form, Label, Input, Button, Dropdown } from 'semantic-ui-react';
-import { saveRefreshRate, getRefreshRate } from '../Services/settings';
+import { Menu, Image, Modal, Form, Label, Input, Button, Dropdown, Icon } from 'semantic-ui-react';
+import { saveRefreshRate, getRefreshRate, Theme } from '../Services/settings';
 import logo from '../static/logo.png';
 
-const HeaderMenu = (): JSX.Element => {
+interface IHeaderMenuProps {
+  theme: Theme;
+  onToggleTheme: () => void;
+}
+
+const HeaderMenu = ({ theme, onToggleTheme }: IHeaderMenuProps): JSX.Element => {
   const [refreshRateInSeconds, setRefreshRate] = useState<number>(() => getRefreshRate() / 1000);
 
   const SaveSettings = (_event: unknown, _data: unknown) => {
@@ -32,7 +37,16 @@ const HeaderMenu = (): JSX.Element => {
           <Dropdown.Item icon="pause" text="Pause all" onClick={PauseAll} />
         </Dropdown.Menu>
       </Dropdown>
-      <Modal trigger={<Menu.Item position="right">Settings</Menu.Item>} closeIcon>
+      <Menu.Item
+        position="right"
+        onClick={onToggleTheme}
+        aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+        title={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+      >
+        <Icon name={theme === 'dark' ? 'sun' : 'moon'} />
+        {theme === 'dark' ? 'Light theme' : 'Dark theme'}
+      </Menu.Item>
+      <Modal trigger={<Menu.Item>Settings</Menu.Item>} closeIcon>
         <Modal.Header content="Settings" />
         <Modal.Content>
           <Form>

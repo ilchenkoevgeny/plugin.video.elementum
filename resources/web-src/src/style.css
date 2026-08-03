@@ -1,3 +1,44 @@
+:root {
+  color-scheme: light;
+  --background: #f4f6f8;
+  --surface: #ffffff;
+  --surface-alt: #f8f9fa;
+  --surface-hover: #f1f4f7;
+  --surface-active: #e8f1fb;
+  --text: #1b1c1d;
+  --text-muted: #5f6b76;
+  --border: rgba(34, 36, 38, 0.15);
+  --input-background: #ffffff;
+  --accent: #2185d0;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --background: #0d1117;
+  --surface: #161b22;
+  --surface-alt: #21262d;
+  --surface-hover: #292f37;
+  --surface-active: #17365d;
+  --text: #e6edf3;
+  --text-muted: #9da7b3;
+  --border: #30363d;
+  --input-background: #0d1117;
+  --accent: #58a6ff;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
 .bar {
   min-width: 0 !important;
 }
@@ -56,6 +97,148 @@ div.app {
 
 .ui.fluid.search .results {
   width: 150%;
+}
+
+:root[data-theme='dark'] a,
+:root[data-theme='dark'] .ui.list .list > .item a.header,
+:root[data-theme='dark'] .ui.list > .item a.header {
+  color: var(--accent) !important;
+}
+
+:root[data-theme='dark'] .ui.menu,
+:root[data-theme='dark'] .ui.table,
+:root[data-theme='dark'] .ui.segment,
+:root[data-theme='dark'] .ui.modal,
+:root[data-theme='dark'] .ui.modal > .header,
+:root[data-theme='dark'] .ui.modal > .content,
+:root[data-theme='dark'] .ui.modal > .actions,
+:root[data-theme='dark'] .ui.search > .results,
+:root[data-theme='dark'] .ui.selection.dropdown,
+:root[data-theme='dark'] .ui.selection.dropdown .menu,
+:root[data-theme='dark'] .ui.message {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+:root[data-theme='dark'] .ui.menu .item,
+:root[data-theme='dark'] .ui.menu .item > a:not(.ui),
+:root[data-theme='dark'] .ui.menu .dropdown.item .menu .item,
+:root[data-theme='dark'] .ui.table,
+:root[data-theme='dark'] .ui.table td,
+:root[data-theme='dark'] .ui.modal > .header,
+:root[data-theme='dark'] .ui.modal > .content,
+:root[data-theme='dark'] .ui.modal > .actions,
+:root[data-theme='dark'] .ui.list .item,
+:root[data-theme='dark'] .ui.list .list > .item .header,
+:root[data-theme='dark'] .ui.list > .item .header,
+:root[data-theme='dark'] .ui.list .list > .item .description,
+:root[data-theme='dark'] .ui.list > .item .description,
+:root[data-theme='dark'] .ui.tabular.menu .item {
+  color: var(--text) !important;
+}
+
+:root[data-theme='dark'] .ui.menu .active.item,
+:root[data-theme='dark'] .ui.menu .item:hover,
+:root[data-theme='dark'] .ui.menu .dropdown.item .menu .item:hover,
+:root[data-theme='dark'] .ui.selection.dropdown .menu > .item:hover,
+:root[data-theme='dark'] .ui.selection.dropdown .menu > .selected.item,
+:root[data-theme='dark'] .ui.tabular.menu .active.item {
+  background: var(--surface-hover) !important;
+  color: var(--text) !important;
+}
+
+:root[data-theme='dark'] .ui.table thead th,
+:root[data-theme='dark'] .ui.table tfoot th {
+  background: var(--surface-alt) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+:root[data-theme='dark'] .ui.table tr td,
+:root[data-theme='dark'] .ui.table tr th,
+:root[data-theme='dark'] .ui.table tbody + tbody {
+  border-color: var(--border) !important;
+}
+
+:root[data-theme='dark'] .ui.selectable.table tbody tr:hover,
+:root[data-theme='dark'] .ui.table tbody tr.active,
+:root[data-theme='dark'] .ui.table tr.active td {
+  background: var(--surface-active) !important;
+  color: var(--text) !important;
+}
+
+:root[data-theme='dark'] .ui.input > input,
+:root[data-theme='dark'] .ui.form input:not([type]),
+:root[data-theme='dark'] .ui.form input[type='number'],
+:root[data-theme='dark'] .ui.form input[type='text'],
+:root[data-theme='dark'] .ui.form input[type='file'],
+:root[data-theme='dark'] .ui.selection.dropdown,
+:root[data-theme='dark'] .ui.selection.dropdown .menu > .item {
+  background: var(--input-background) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+:root[data-theme='dark'] .ui.input > input::placeholder,
+:root[data-theme='dark'] .ui.form input::placeholder,
+:root[data-theme='dark'] .ui.dropdown:not(.button) > .default.text,
+:root[data-theme='dark'] .ui.statistic > .label,
+:root[data-theme='dark'] .ui.statistics .statistic > .label,
+:root[data-theme='dark'] .ui.search > .results .result .description,
+:root[data-theme='dark'] .ui.search > .results .result .price {
+  color: var(--text-muted) !important;
+}
+
+:root[data-theme='dark'] .ui.statistic > .value,
+:root[data-theme='dark'] .ui.statistics .statistic > .value,
+:root[data-theme='dark'] .ui.search > .results .result .title,
+:root[data-theme='dark'] .ui.search > .results .result .content,
+:root[data-theme='dark'] .ui.form .field > label,
+:root[data-theme='dark'] .ui.checkbox label,
+:root[data-theme='dark'] .ui.checkbox + label {
+  color: var(--text) !important;
+}
+
+:root[data-theme='dark'] .ui.search > .results .result,
+:root[data-theme='dark'] .ui.search > .results .message {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+
+:root[data-theme='dark'] .ui.search > .results .result:hover,
+:root[data-theme='dark'] .ui.search > .results .result.active {
+  background: var(--surface-hover) !important;
+}
+
+:root[data-theme='dark'] .ui.basic.buttons .button,
+:root[data-theme='dark'] .ui.basic.button {
+  background: transparent !important;
+  color: var(--text) !important;
+  box-shadow: 0 0 0 1px var(--border) inset !important;
+}
+
+:root[data-theme='dark'] .ui.label:not(.green):not(.red):not(.yellow):not(.blue) {
+  background: var(--surface-alt) !important;
+  color: var(--text) !important;
+}
+
+:root[data-theme='dark'] .ui.tabular.menu {
+  border-color: var(--border) !important;
+}
+
+:root[data-theme='dark'] .ui.tabular.menu .active.item {
+  border-color: var(--border) !important;
+  border-bottom-color: var(--surface-hover) !important;
+}
+
+:root[data-theme='dark'] .ui.dimmer {
+  background-color: rgba(1, 4, 9, 0.78) !important;
+}
+
+:root[data-theme='dark'] .ui.modal > .close {
+  color: var(--text) !important;
 }
 
 @media only screen and (max-width: 768px) {
